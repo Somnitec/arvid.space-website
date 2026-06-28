@@ -1,0 +1,335 @@
+addEventListener('fetch', event => {
+  event.respondWith(handleRequest(event.request))
+})
+
+async function handleRequest(request) {
+  const html = `
+  <!DOCTYPE html>
+<html lang="en">
+
+
+
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-78R6PD3SYK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-78R6PD3SYK');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Arvid Jense | Explorer of the Metacrisis, Critical Designer, Societally Engaged Artist. Discover projects that merge design, art, and societal exploration.">
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #000;
+        color: #fff;
+        line-height: 1.8;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: 'Georgia', serif;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      header {
+        text-align: center;
+        padding: 1.618rem 0;
+        /* Golden ratio spacing */
+      }
+
+      header h1 {
+        font-size: 4rem;
+        /* Larger font size for emphasis */
+        margin: 0;
+        color: #f9f9f9;
+        line-height: .65;
+        /* Reduces the space between lines when broken */
+      }
+
+      header p {
+        font-size: 0.9rem;
+        color: #aaa;
+        max-width: 800px;
+        padding-top: 1rem;
+        margin: 0 auto 2rem auto;
+        line-height: .95;
+
+        font-style: italic;
+        /* Adjust bottom spacing */
+      }
+
+      .content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 1rem;
+      }
+
+      .project {
+        margin-bottom: 2.618rem;
+        /* Golden ratio spacing for harmony */
+        cursor: pointer;
+        position: relative;
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        line-height: .67;
+      }
+      
+      h2 .date {
+        font-size: 1rem;
+        color: #777;
+        margin-left: 10px; /* Optional: adds a bit of space between the title and the date */
+      }
+
+      .project p {
+        margin: 0 auto;
+        font-size: 1rem;
+        color: #ddd;
+        line-height: .95;
+      }
+
+      .credits {
+
+        color: #aaa; /* Light grey color */
+        margin-top: 0.5rem;
+        font-style: italic;
+      }
+      
+      .credits p {
+        font-size: 0.7rem; /* Smaller text size for credits */
+        margin: 0.1rem 0; /* Add spacing between credit lines */
+      }
+      
+      .credits a {
+        color: #777 !important; /* Force greyscale link color */
+        text-decoration: none; /* Remove default underline */
+        font-style: italic; /* Match the style of the credits */
+      }
+      
+      .credits a:hover {
+        text-decoration: underline; /* Add underline on hover */
+        color: #ccc; /* Lighten the link color on hover */
+      }
+
+      .separator {
+        text-align: center;
+        font-size: 2rem;
+        color: #555;
+        margin: 1.618rem 0;
+        /* Golden ratio spacing */
+      }
+
+      footer {
+        font-family: 'Georgia', serif;
+        text-align: center;
+        margin: 2.618rem 0;
+        font-size: 2rem;
+        color: #777;
+      }
+
+      /* Popout styling */
+      .popout {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        height: 80%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+        z-index: 1000;
+        overflow: hidden;
+      }
+
+
+
+      .popout img {
+        max-width: 90%;
+        max-height: 90%;
+        margin: auto;
+        display: block;
+        border-radius: 8px;
+           }
+     
+
+      .close {
+        position: absolute;
+        top: -1rem;
+        right: 1rem;
+        font-size: 1.5rem;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      /* Background overlay */
+      .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 999;
+
+      
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Arvid Jense</h1>
+      <p>Here you go, see some of my projects, the works of a being navigating the thresholds of metamodernism, nondual thinking, and the meta-crisis through design, performance, and critical inquiry</p>
+    </header>
+    <div class="separator">⌇</div>
+    <div class="content">
+      <div class="project" onclick="showPopout('https://lab.nl/wp-content/uploads/2024/04/arvid.jpg')">
+        <h2>MetaFool<span class="date">2025</span></h2>
+        <p>An exploration of the sacred clown archetype, humor, and migration discourse—breaking dogmas and engaging with cultural narratives.</p>
+        <div class="credits">
+          <p>See more: <a href="https://www.instagram.com/arvidjense/" target="_blank">Instagram</a></p>
+        </div>
+        </div>
+      <div class="separator">〰</div>
+      <div class="project" onclick="showPopout('https://www.somosindustria.com/media/img/notas/500_Heineken_Abril18.jpg')">
+        <h2>Water in the Desert<span class="date">2025</span></h2>
+        <p>A poetic critique of corporate extraction, environmental justice, and resistance, set in Chihuahua's arid landscapes.</p>
+        <div class="credits">
+          <p>Collaborators: <em>Hugo, Chihuahua locals</em></p>
+        </div>
+      </div>
+      <div class="separator">〰</div>
+      <div class="project" onclick="showPopout('https://mariecaye.com/wp-content/uploads/2020/12/samcredit-designaacademyeindhoven-femke-rijerman-small-crop-u138432.jpg')">
+        <h2>SAM and the Bestiary of Autonomous Machines<span class="date">2019</span></h2>
+        <p>A speculative catalog of playful, critical autonomous machines exploring artificial life and ethics.</p>
+        <div class="credits">
+          <p>Collaborators: <em><a href="https://www.batlabat.com/" target="_blank">Baptiste Labat</a>, <a href="https://www.jonasersland.net/" target="_blank">Jonas Ersland</a>, <a href="https://mariecaye.com" target="_blank">Marie Caye</a></em></p>
+          <p>See more: <a href="https://www.youtube.com/watch?v=jCe1TPHlZBY" target="_blank">Presentation</a></p>
+        </div>
+      </div>
+      <div class="separator">〰</div>
+      <div class="project" onclick="showPopout('https://mariecaye.com/wp-content/uploads/2020/12/OMNINAUT-Beijing-IOAMmuseum-05.jpg')">
+        <h2>Omninaut<span class="date">2017-2021</span></h2>
+        <p>Immersive performances bridging human-machine interaction and space exploration, with a touch of the liminal.</p>
+        <div class="credits">
+          <p>Collaborators: <em><a href="https://mariecaye.com" target="_blank">Marie Caye</a></em></p>
+          <p>See more: <a href="https://www.youtube.com/channel/UCLePzy_U1crl5XGJOgQMMWw" target="_blank">Youtube</a></p>
+        </div>
+      </div>
+      <div class="separator">〰</div>
+      <div class="project" onclick="showPopout('https://mariecaye.com/wp-content/uploads/2020/12/smallP1160104-1024x768.jpg')">
+        <h2>Pigstrument<span class="date">2016</span></h2>
+        <p>A hybrid sound-producing instrument and interactive performance system, merging biology with technology to explore new auditory possibilities.</p>
+        <div class="credits">
+          <p>Collaborators: <em><a href="https://www.zlto.nl/" target="_blank">ZLTO</a>, <a href="https://mariecaye.com" target="_blank">Marie Caye</a></em></p>
+          <p>Hear more: <a href="https://www.youtube.com/watch?v=QtrN_iuz6Jk" target="_blank">Video</a></p>
+        </div>
+      </div>
+      <div class="separator">〰</div>
+      <div class="project" onclick="showPopout('https://mariecaye.com/wp-content/uploads/2020/12/FullBodySmartAutomaticManipulator-ArvidAndMarie-SasSchiltenPhotography-11.jpg')">
+        <h2>Full Body Smart Automatic Manipulator<span class="date">2019</span></h2>
+        <p>A versatile robotic system designed for precision tasks in unpredictable environments, seamlessly blending technology and human assistance.</p>
+        <div class="credits">
+          <p>Collaborators: <em><a href="http://www.chronusartcenter.org/en/" target="_blank">Chronus Art Center</a>, <a href="https://soundcloud.com/rachel-yin" target="_blank">Rachel Yin</a>, <a href="https://alexandervanderzalm.com/" target="_blank">Alexander van der Zalm</a>, Michelle O’Higgins, <a href="https://mariecaye.com" target="_blank">Marie Caye</a></em></p>
+          <p>See more: <a href="https://www.facebook.com/instrumentinventors/videos/369744921819268/" target="_blank">Video</a></p>
+        </div>
+      </div>
+      <div class="separator">〰</div>
+      <div class="project" onclick="showPopout('https://omniphone776792973.wordpress.com/wp-content/uploads/2020/09/083_bwc3937.jpg?w=683')">
+        <h2>Omniphone<span class="date">2021</span></h2>
+        <p>An all-encompassing communication device, integrating voice, vision, and tactile feedback to create the ultimate interface for human-machine collaboration.</p>
+        <div class="credits">
+          <p>Collaborators: <em><a href="https://www.re-creatie-reinaerde.nl/ontwerpers-en-kunstenaars/arvid-marie/" target="_blank">Re-Creatie</a>, <a href="https://mariecaye.com" target="_blank">Marie Caye</a></em></p>
+          <p>Read more: <a href="https://cdm.link/omniphone-inclusive-design-music-therapy/" target="_blank">Article</a></p>
+        </div>
+      </div>
+      <div class="separator">〰</div>
+      <div class="project" onclick="showPopout('https://mariecaye.com/wp-content/uploads/2020/12/fashionclashsmallwebsmall-1024x681.jpg')">
+        <h2>Alibabaum Sortium<span class="date">2018</span></h2>
+        <p>A speculative catalog of buyable objects, re-imagining commerce and collaboration in a hyper-connected world of networked systems.</p>
+        <div class="credits">
+          <p>Collaborators: <em><a href="https://alibaba.geodesign.online/" target="_blank">GEO-DESIGN</a>, <a href="https://mariecaye.com" target="_blank">Marie Caye</a></em></p>
+          <p>Read more: <a href="https://awrd.com/creatives/detail/9254724" target="_blank">Article</a></p>
+        </div>
+      </div>
+      <div class="separator">〰</div>
+      <div class="project" onclick="showPopout('https://www.notion.so/signed/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fa87fb53c-9326-4836-b6a2-a015e7ae7112%2Fb394e1c0-53df-487a-9770-2dad477040b5%2FUntitled.jpeg?table=block&id=936a9c0c-d4d1-4d6d-a57d-ffc932a6800e&spaceId=a87fb53c-9326-4836-b6a2-a015e7ae7112&name=Untitled.jpeg&userId=5ce3e755-8d87-4938-8849-6ac43b2869dd&cache=v2')">
+        <h2>Billboards<span class="date">2020</span></h2>
+        <p>Exploring the intersection of urban aesthetics, advertising, and the hidden stories of technology, this project redefines the role of billboards in modern society.</p>
+        <div class="credits">
+          <p>Collaborators: <em><a href="https://www.artrabbit.com/people/hayley-gibson/curator" target="_blank">Hayley Gibson</a>, <a href="https://www.kaurmanjot.com/" target="_blank">Manjot Kaur</a>, <a href="https://www.postneon.com/" target="_blank">Post Neon</a>, <a href="https://www.batlabat.com/" target="_blank">Baptiste Labat</a>, <a href="https://mariecaye.com" target="_blank">Marie Caye</a></em></p>
+          <p>Read more: <a href="https://spaces.rca.ac.uk/fulfilmentservicesltd/artists/arvidmarie/" target="_blank">Article</a></p>
+        </div>
+      </div>
+      <div class="separator">〰</div>
+      <div class="project" onclick="showPopout('https://www.notion.so/signed/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fa87fb53c-9326-4836-b6a2-a015e7ae7112%2F6f6089de-adfb-4b42-ae08-cfc073deb170%2FUntitled.webp?table=block&id=07f00ae6-6d28-412e-b84b-93e94e42ff64&spaceId=a87fb53c-9326-4836-b6a2-a015e7ae7112&name=Untitled.webp&userId=5ce3e755-8d87-4938-8849-6ac43b2869dd&cache=v2')">
+        <h2>Tree Antenna<span class="date">2018</span></h2>
+        <p>Reflection on antennas hiding as trees, merging biology with wireless technology in a harmonious(?) way.</p>
+        <div class="credits">
+          <p>Collaborators: <em><a href="https://mariecaye.com" target="_blank">Marie Caye</a></em></p>
+          <p>Read more: <a href="https://www.vice.com/nl/article/ontwerp-toilet-iphone-5g/" target="_blank">Article</a></p>
+        </div>
+      </div>
+      <div class="separator">〰</div>
+      <div class="project" onclick="showPopout('https://www.vice.com/wp-content/uploads/sites/2/2020/06/1591277956693-pjimage-18.jpeg')">
+        <h2>Toilet<span class="date">2019</span></h2>
+        <p>A critical reflection on the future of sanitation and design, exploring the social, environmental, and technological implications of the toilet in modern society.</p>
+        <div class="credits">
+          <p>Collaborators: <em><a href="https://mariecaye.com" target="_blank">Marie Caye</a></em></p>
+          <p>Read more: <a href="https://www.vice.com/nl/article/ontwerp-toilet-iphone-5g/" target="_blank">Article</a></p>
+        </div>
+      </div>
+      <div class="separator">〰</div>
+      <div class="project" onclick="showPopout('https://janvaneyck.nl/site/assets/files/10125/img_20221002_211329_894.1500x1500.jpg')">
+        <h2>Borders of Europe & Turtle Island<span class="date">2024</span></h2>
+        <p>Collaborations with Indigenous communities, amplifying resistance and decolonial perspectives in border spaces.</p>
+        <div class="credits">
+          <p>Collaborators: <em><a href="https://unsettlingamerica.wordpress.com/solidarity-projects/black-mesa-indigenous-support/" target="_blank">Black Mesa Indigenous Support</a>, <a href="https://unistoten.camp/" target="_blank">Unist’ot’en Healing Centre </a>, <a href="https://www.gvs-samaritans.org/" target="_blank">Green Valley-Sahuarita Samaritans</a>, <a href="https://laubergedesmigrants.fr/en/" target="_blank">l'Auberge des Migrants</a></em></p>
+          
+        </div>
+      </div>
+    </div>
+    <div class="overlay" id="overlay" onclick="closePopout()"></div>
+    <div class="popout"  onclick="closePopout()" id="popout">
+      <span class="close" onclick="closePopout()">&times;</span>
+      <img id="popoutImage" src="" alt="Project Image">
+    </div>
+    <footer>
+      <p>~ <a href="mailto:arvidj@gmail.com" style="color: #aaa;">contact me</a> ~ </p>
+    </footer>
+    <script>
+      function showPopout(image) {
+        document.getElementById('overlay').style.display = 'block';
+        const popout = document.getElementById('popout');
+        popout.style.display = 'block';
+        document.getElementById('popoutImage').src = image;
+      }
+
+      function closePopout() {
+        document.getElementById('overlay').style.display = 'none';
+        document.getElementById('popout').style.display = 'none';
+      }
+    </script>
+  </body>
+</html>
+`;
+return new Response(html, {
+    headers: {
+        'Content-Type': 'text/html;charset=UTF-8',
+    },
+});
+}
